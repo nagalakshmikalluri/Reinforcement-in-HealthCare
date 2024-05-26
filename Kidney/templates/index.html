@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>CKD</title>
+  <script src="https://kit.fontawesome.com/47101d2035.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #34495e;
+    }
+
+    .navbar-custom {
+      background-color: #2b2d2e;
+      padding: 0.1rem 0.5rem;
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+      color: #ebe5e5;
+      font-size: medium;
+    }
+
+    .form-container {
+      width: 60%;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-label {
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #34495e;
+      display: block; /* Ensures label names display in a single row */
+    }
+
+    h1 {
+      color: #f5f0f0;
+      text-align: center;
+      font-weight: 500;
+      font-size: 50px;
+      text-transform: uppercase;
+    }
+
+    .form-control {
+      width: calc(100% - 30px);
+      margin-bottom: 10px;
+      position: relative;
+      left: 15px;
+    }
+
+    .btn-primary {
+      background-color: #e74c3c;
+      border-color: #e74c3c;
+    }
+
+    .btn-primary:hover {
+      background-color: #c0092b;
+      border-color: #c0392b;
+    }
+
+    .container {
+      position: relative;
+      top: 80px;
+    }
+
+    .col-sm-2 {
+      flex: 0 0 15%;
+      max-width: 15%;
+    }
+
+    .col-sm-10 {
+      flex: 0 0 85%;
+      max-width: 85%;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="{% url 'home' %}">CHRONIC KIDNEY DISEASE</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active" href="{% url 'home' %}">HOME</a>
+        <a class="nav-item nav-link" href="{% url 'index' %}">DISEASE</a>
+        <a class="nav-item nav-link" href="{% url 'logout' %}">LOGOUT</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <h1>CHRONIC KIDNEY DISEASE</h1><br>
+    <div class="row justify-content-md-center">
+      <div class="col-md-8 form-container">
+        <form action='result' method="post">
+          {% csrf_token %}
+          <div class="form-group row">
+            <label for="age" class="col-sm-2 col-form-label form-label">AGE:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="age" placeholder="AGE:" name="age" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="bp" class="col-sm-2 col-form-label form-label">BP:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="bp" placeholder="BP:" name="bp" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="sg" class="col-sm-2 col-form-label form-label">SG:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="sg" placeholder="SG:" name="sg" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="al" class="col-sm-2 col-form-label form-label">ALBUMIN:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="al" placeholder="AL:" name="al" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="su" class="col-sm-2 col-form-label form-label">SUGAR_LEVEL:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="su" placeholder="SU:" name="su" required>
+            </div>
+          </div>
+          <!-- Replace input fields with select dropdowns as needed -->
+          <div class="form-group row">
+            <label for="rbc" class="col-sm-2 col-form-label form-label">RBC:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="rbc" name="rbc" required>
+                <option value="">Select</option>
+                <option value="0">Normal</option>
+                <option value="1">Abnormal</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="pc" class="col-sm-2 col-form-label form-label">PC:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="pc" name="pc" required>
+                <option value="">Select</option>
+                <option value="1">Abnormal</option>
+                <option value="0">Normal</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="pcc" class="col-sm-2 col-form-label form-label">PCC:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="pcc" name="pcc" required>
+                <option value="">Select</option>
+                <option value="1">Present</option>
+                <option value="0">Not Present</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="ba" class="col-sm-2 col-form-label form-label">BACTERIA:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="ba" name="ba" required>
+                <option value="">Select</option>
+                <option value="1">Present</option>
+                <option value="0">Not Present</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="appet" class="col-sm-2 col-form-label form-label">APPETITE:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="appet" name="appet" required>
+                <option value="">Select</option>
+                <option value="0">Good</option>
+                <option value="1">Poor</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="pe" class="col-sm-2 col-form-label form-label">PEDAL_EDEMA:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="pe" name="pe" required>
+                <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="ane" class="col-sm-2 col-form-label form-label">ANEMIA:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="ane" name="ane" required>
+                <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Predict</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
